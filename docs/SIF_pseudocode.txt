@@ -1,0 +1,29 @@
+
+Jo=4.6*APAR*alpha      #maximum possible electron transport rate Jo
+# alpha = quantum efficiency (= 0.06 mol CO2/ mol photons for C3, 0.04 for C4 )
+
+if(C3 ) Je=A*(ci+2.0*gamma_star)/(ci-gamma_star)     # C3 actual electron transport rate Je
+else Je=A					    	    	     	       # C4
+# A=photosysnthesis
+# ci = intercellular CO2 concentration
+# gamma_star= CO2 concentration at compensation point
+
+Phi_p=Phi_po*Je/Jo    # photochemical quantum yield (dimless)
+# Phi_Po = 0.8 (according to Björkman and Demmig, 1987) is the efficiency of photochemical trapping in the dark adapted state (dimless)
+
+kf=0.05							# rate coefficient fluorescence (s-1) 
+kd=MAX(0.03*Temp+0.0773, 0.087) 	# rate coefficient dark-adapted (s-1) , Temp=temperature in degree Celsius 
+x=1.0-Phi_p/Phi_Po
+kn=(6.2473*x-0.5944)*x				# rate coefficient light-adapted (s-1) 
+
+Phi_f=kf/(kf+kd+kn)*(1.0-Phi_p)		# fluorescence yield (dimless)
+
+F=APAR*Phi_f				  	        # leaf level SIF (umol/m2/s)
+
+if(Vmax25<= 70.0) k=0.047716*Vmax25+7.70092    # k= conversion factor from leaf level fluorescence to spectrometer oserved fluorescence, see Fig. 1 Lee et al.
+else k=0.032686*Vmax25+8.75302
+
+F_755nm=F/k						# SIF at 755nm (W/m2/sr/um)
+
+
+We have: A(umol/m2/s) , ci, gamma_star, alpha, Vcmax25(umol/m2/s), APAR(should be umol/m2/s), 

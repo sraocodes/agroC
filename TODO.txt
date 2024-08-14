@@ -1,0 +1,51 @@
+10.09..2021
+  check correct_sink for N and P
+
+01.09.2021
+  New Module for phosphorus modelling from epic code inserted.
+  - in selector.in:
+    new block J for phosphorus
+    solute input now in block K
+
+31.05.2021
+  1. New format of the fertilizer input for Nitrogen:
+
+     removed lines:
+     ### fractions of Urea, NH4 and NO3 in fertilizer
+     0.15    0.1     0.75
+
+     changed block:
+     from:
+     ### N fertilizer application on top (2 lines: timestep and mass [M/L2])
+     10          390       790      1100 
+     1.9e-6   1.9e-6   1.9e-6   1.9e-6
+     to:
+     ### Number of  N fertilizer applications on top
+     4
+     ### N fertilizer application on top (1 line per time: time, mass_urea mass_NH4 mass_NO3)
+     10   0.285e-7 1.9e-7 1.42e-6
+     390  0.285e-7 1.9e-7 1.42e-6
+     790  0.285e-7 1.9e-7 1.42e-6
+     1100 0.285e-7 1.9e-7 1.42e-6
+
+     commited: 8.6.2021 (r7540)
+
+  2. New format for initial N-pools
+     new block in the last position of N input:
+     # N pool input per line: PoolLit PoolMan PoolHum (dpm,rpm,hum)
+     9.0e-08     2.0026e-07        1.1196e-06
+     9.0e-08     2.0026e-07        1.1196e-06
+     5.0e-08     1.1122e-07        6.5510e-07
+     5.0e-08     1.1122e-07        6.5510e-07
+     1.0e-11     1.0e-11              1.0e-11
+     The number of lines depends on co2alf:
+     co2alf>0: 1 line, exponential distribution
+     co2alf==-1: NumNP lines, one value for every node
+     else: NumMat lines, one value for every material
+
+     commited: 8.6.2021 (r7540)
+
+27.10.2021:
+     NitSink ersetzt durch rdenit in Zeile: if(sp.eq.3) rdenit(i)=max(rdenit(i)+deficit,0.0d0)
+     phosphorus: Raten in correct_sink auch reduzieren?
+     active and stabile pools empty

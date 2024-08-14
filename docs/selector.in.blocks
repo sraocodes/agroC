@@ -1,0 +1,14 @@
+required blocks
+*** BLOCK A: BASIC INFORMATION *****************************************
+*** BLOCK B: NODAL INFORMATION *****************************************
+*** BLOCK C: MATERIAL INFORMATION **************************************
+*** BLOCK D: TIME INFORMATION ******************************************
+
+optional blocks:
+*** BLOCK E: root growth information
+*** BLOCK F: sink information
+*** BLOCK G: transport information
+*** BLOCK H: CO2 transport and production information
+*** BLOCK I: nitrogen input
+*** BLOCK K: phosphorus input
+*** BLOCK J: solute transport information

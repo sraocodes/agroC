@@ -1,0 +1,69 @@
+Mol CO2, also 22,4 Liter, 44 Gramm.
+1 mikro mol = 0.000000044 kg
+
+photosynthesis is A = min ( w_c , w_j , w_e )
+
+w_c, w_j, w_e in: ( μ mol CO_2 ) /  m**2 / s 
+
+The RuBP carboxylase (Rubisco) limited rate of carboxylation:
+w_c = v_cmax * (c_i - gamma) / (  c_i + K_c ( 1 + o_i* K_o )  for C_3 plants
+oder
+w_c = v_cmax    for C_4 plants: 
+
+    (gamma=Γ_*) c_i-gamma>=0
+
+K_c and K_o are the Michaelis-Menten constants (Pa) for CO_2 and O_2
+K_c = K_c25 * a_kc ** ((T_v - 25)/10)
+K_o = K_o25 * a_ko ** ((T_v - 25)/10)
+K_c25 = 30.0 and K_o25 = 30000.0 are values (Pa) at 25Grad, and a_kc = 2.1 and
+a_ko = 1.2 are the relative changes in K_c25 and K_o25 , respectively, for a 10Grad change in temperature
+c_i is the internal leaf CO_2 partial pressure (Pa) and
+o_i = 0.209*P_atm is the O_2 partial pressure (Pa)
+The CO_2 compensation point gamma (Pa) is gamma=0.5*K_c/K_o*0.21*o_i
+
+
+
+The maximum rate of carboxylation allowed by the capacity to regenerate RuBP (i.e., the light-limited rate):
+w_j = 4.6*phi*alpha * ( c_i - gamma )  / ( c_i + 2*gamma )  for C_3 plants
+oder
+w_j = 4.6*phi*alpha     for C_4 plants
+alpha is the quantum efficiency ( μ mol CO_2 per μ mol photons)
+phi is the absorbed photosynthetically active radiation (W/m**2), which is converted to photosynthetic photon flux assuming 4.6 μ mol photons per Joule
+
+The export limited rate of carboxylation for C_3 plants and the PEP carboxylase limited rate of carboxylation for C_4 plants
+w_e = 0.5*v_cmax               for C_3 plants:
+oder
+w_e = 4000*v_cmax * c_i/P_atm  for C_4 plants
+
+The term 4000*v_cmax results in saturation at about 400 ppm.
+
+
+v_cmax is the maximum rate of carboxylation (μmol CO_2 / m**2 / s )
+At 25Grad:
+V_cmax25 = N_a * F_LNR * F_NR * alpha_R25
+N_a is the area-based leaf nitrogen concentration (g N / m**2 leaf area)
+F_LNR is the fraction of leaf nitrogen in Rubisco (g N in Rubisco / g N) Table 8.1
+F NR = 7.16 is the mass ratio of total Rubisco molecular mass to nitrogen in Rubisco (g Rubisco / g N in Rubisco)
+alpha_R25 = 60 is the specific activity of Rubisco (μmol CO_2 / g Rubisco / s)
+
+N_a = 1 / (CN_L*SLA)
+CN_L is the leaf carbon-to-nitrogen ratio (g C / g N) Table 8.1
+SLA is specific leaf area (m**2 leaf area / g C)
+SLA = SLA_0 + SLA_m * x
+SLA_0 is the value for SLA at the top of the canopy (m**2 leaf area / g  C) and SLA_m is the linear slope coefficient (Table 8.1).
+
+V_cmax varies with leaf temperature ( T_v ), soil water ( beta_t ), and as a function of daylength ( DYL )
+V_cmax = V_cmax25 * 2.4**((T_v-25)/10) * f(T_v)*beta_t*f(DYL)*f(N)   without active bgc
+V_cmax = V_cmax25 * 2.4**((T_v-25)/10) * f(T_v)*beta_t*f(DYL)        with active bgc
+
+The term f(N) scales V_cmax for nitrogen limitation   (Table 8.1)
+f(T_v) is a function that mimics thermal breakdown of metabolic processes
+
+f(T_v) = 1 / ( 1+exp(-220000+710*(T_v+T_f)/(0.001*R_gas*(T_v+T_f))) )
+T_f is the freezing temperature of water (K)
+R_gas is the universal gas constant (J / K / kmol) (Table 1.4)
+f(DYL) is a function that scales V_cmax for daylength and introduces seasonal
+variation to V_cmax:
+f(DYL) = DYL**2/DYL_max**2    with 0.01 <= f(DYL) <= 1
+Daylength (seconds) is given by:
+DYL = 2 * 13750.9871/cos(-sin(lat)*sin(decl)/cos(lat)/cos(decl))

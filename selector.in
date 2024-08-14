@@ -1,0 +1,210 @@
+*** BLOCK A: BASIC INFORMATION *****************************************
+Heading
+ Zalf Lysimeter Dedelow Dd_2_6 with Nitrogen
+i_check run_inf t_level a_level co2_inf nod_inf balance point nod_pool reduction nod_prod matlab invers term
+  t      t       f      t        f       t       f      f       t         f        f      t      f      f
+LUnit   TUnit   MUnit   MaxIt   TolTh   TolH   QuitNC
+cm       day       kg        20      .001      .01       t
+ShortO   lWat   lCO2   lRoot   lTemp   InitWC   Plants  Nitrogen Phosporus Transport
+   t      t      t      f       t        t        t        t         f        t
+TopInF   AtmBC   SinkF   WLayer   lAmpl   (top boundary conditions)
+    t             t           t           t            
+BotInF   qGWLF   FreeD   SeepF   (bottom boundary conditions)
+    t       f       f           f
+KodTop   KodBot   htop   hbottom   (positive for head and negative for flux boundary cond.)
+   -1      1          0        -128
+rTop   rRoot   rBot   hCritS   hCritA
+  0          0       0       2.0    -15000
+xSurf   GWL0L   Aqh   Bqh
+ 150       0           0        0
+*** BLOCK B: NODAL INFORMATION *****************************************
+NumNP   NMat   NLay   NObs  Nsolutes
+218     9        1     9       3
+Observation points
+190 181 150 110 80 60 30 10 1
+dx-increments (NumNP-1 items)
+10*0.1 118*0.5 89*1
+Node    hOld    MatNum  LayNum  Beta    Conc    Temp    Conc(1:NSolutes)                
+218     0.36    1       1       0       0.00042 21.30   0       1.4704566E-10     9.9049607E-07
+181     0.36    2       1       0       0.01287 18.88   0       7.3298054E-11     3.1733353E-07
+155     0.33    3       1       0       0.01737 18.00   0       4.7060000E-11     2.0190000E-07
+111     0.26    4       1       0       0.02876 15.79   0       9.02000000E-12     8.5010000E-07
+101     0.32    5       1       0       0.03141 15.27   0       8.35500000E-12     7.993000E-08
+86      0.31    6       1       0       0.03538 14.5    0       6.97200000E-12     7.027000E-08
+71      0.30     7       1       0       0.03935 13.73   0       4.7900000E-12     5.5030000E-08
+41     0.28    8      1       0       0.04730 12.18   0       4.6950000E-12     4.6910000E-08
+21     0.26     9      1       0       0.05259 11.15   0       4.632000E-12     4.150000E-08
+1       0.26     9       1       0       0.05789 10.12   0       4.5686367E-12     3.6087396E-08
+*** BLOCK C: MATERIAL INFORMATION **************************************
+hTabMin   hTabMax   NPar
+ -0.001        -1500        10
+Qr        Qs   Qa        Qm      Alfa         n          Ks          Kk        Qk  BPar
+ 0.0  0.434345  0.0  0.434345  0.030730  1.271030  478.469682  478.469682  0.434345   0.5
+ 0.0  0.434345  0.0  0.434345  0.030730  1.271030  478.469682  478.469682  0.434345   0.5
+ 0.0  0.434345  0.0  0.434345  0.030730  1.271030  478.469682  478.469682  0.434345   0.5
+ 0.0  0.352352  0.0  0.352352  0.013593  1.476930  744.709909  744.709909  0.352352   0.5
+ 0.0  0.36  0.0  0.36  0.029792  1.121352  620.817655  620.817655  0.36   0.5
+ 0.0  0.36  0.0  0.36  0.029792  1.121352  620.817655  620.817655  0.36   0.5
+ 0.0  0.36  0.0  0.36  0.029792  1.121352  620.817655  620.817655  0.36   0.5
+ 0.0  0.430990  0.0  0.430990  0.034306  1.599098  323.989949  323.989949  0.430990   0.5
+  0.0  0.396708  0.0  0.396708  0.029063  1.504639   5   5  0.396708   0.5
+*** BLOCK D: TIME INFORMATION ******************************************
+dtInit           dtMin    dtMax   DtMul   DtMul2   NumOfPrints
+.0001     .00001     0.05    1.3         .7             4
+TPrint(1),TPrint(2), .... TPrint(NumOfPrints)
+1 30 60 90
+*** BLOCK F: ROOT WATER UPTAKE INFORMATION *****************************
+P0   H50      fR6
+ 3   -1000.    1.0
+*** BLOCK G: HEAT TRANSPORT INFORMATION ********************************
+Ampl   tPeriod
+ 0.          1.
+kTopT   tTop   kBotT   tBot
+ 1           0.        1       9.8
+Beta   Qn       Qo      B1            B2            B3            Cn          Co          Cw
+1.5    0.581   0.138   1.56728e+16     2.53474e+16     9.89388e+16     1.43300e+14     1.87400e+14     3.12000e+14
+1.5    0.581   0.138   1.56728e+16     2.53474e+16     9.89388e+16     1.43300e+14     1.87400e+14     3.12000e+14
+1.5    0.581   0.138   1.56728e+16     2.53474e+16     9.89388e+16     1.43300e+14     1.87400e+14     3.12000e+14
+1.5    0.624   0.138   1.56728e+16     2.53474e+16     9.89388e+16     1.43300e+14     1.87400e+14     3.12000e+14
+1.5    0.624   0.138   1.56728e+16     2.53474e+16     9.89388e+16     1.43300e+14     1.87400e+14     3.12000e+14
+1.5    0.624   0.138   1.56728e+16     2.53474e+16     9.89388e+16     1.43300e+14     1.87400e+14     3.12000e+14
+1.5    0.636   0.138   1.56728e+16     2.53474e+16     9.89388e+16     1.43300e+14     1.87400e+14     3.12000e+14
+1.5    0.636   0.138   1.56728e+16     2.53474e+16     9.89388e+16     1.43300e+14     1.87400e+14     3.12000e+14
+1.5    0.636   0.138   1.56728e+16     2.53474e+16     9.89388e+16     1.43300e+14     1.87400e+14     3.12000e+14
+*** BLOCK H: CARBON DIOXIDE TRANSPORT AND PRODUCTION INFORMATION *******
+lStagn   iGasDiff   co2dtmin
+ f               2    
+kTopCO   CO2Top    kBotCO   CO2Bot
+ 1             0.00038       -1             0.
+DispA          DispW   Disper.
+13737.6    1.529000    3
+13737.6    1.529000    3
+13737.6    1.529000    3
+13737.6    1.529000    3
+13737.6    1.529000    3
+13737.6    1.529000    3
+13737.6    1.529000    3
+13737.6    1.529000    3
+13737.6    1.529000    3
+gamS0   gamR0   PDDMax   kProd (0=exp 1=vG 3=RothC)
+ 0.42        0.28       1275          3
+xR
+ 0.105
+B1      B2       cM1    cM2    HB1   HB2      fS6          Patm          gasconst      MolCO2
+6675   6014   0.19    0.14      -70   -10e+7     1     7.56387e+12   6.20667e+14   0.0440098
+kDPM                 kRPM           kBIO               kHUM          Pdepth   initDistribution
+ 2.739726e-2  8.219178e-4    1.808219e-3     5.479452e-5      30.0            0
+iredW   iredT   iredCO2   iReftemp   Reftemp   hCentury   B1dpm   B1rpm   B1bio   B1hum
+ 1           1            1            0           9.8          -1000
+clay for each material type
+0.10
+0.10
+0.11
+0.12
+0.27
+0.06
+0.05
+0.05
+0.01
+ iDPM         iRPM              iBIO                iHUM             IOM
+1E-11   2.384E-06       2.800E-07       1.268E-05       1.401E-06
+1E-11   2.384E-06       2.800E-07       1.268E-05       1.401E-06
+1E-11   1.867E-06       2.212E-07       1.003E-05       1.025E-06
+1E-11   1.297E-06       1.464E-07       6.855E-06       4.581E-07
+1E-11   2.591E-06       3.492E-07       1.560E-05       1.471E-06
+1E-11   1.364E-06       1.486E-07       6.819E-06       6.128E-07
+1E-11   4.802E-07       5.000E-08       2.311E-06       1.923E-07
+1E-11   1.063E-06       1.132E-07       5.198E-06       4.706E-07
+1E-11   5.503E-07       4.979E-08       2.307E-06       1.783E-07
+*** BLOCK I: Nitrogen parameters ****************************************************************************************
+lNpools   NRootUpt  Nfixation    rkfixopt [M L2 T-1]  denthresh [-]
+   t        t          f           7.0e-09       0.8
+### Nitrogen tranformation parameters
+10.0       # Ro [-] C/N ratio of the biomass
+0.54       # Fh [-] Humification coefficient; default WAVE = 0.4, negative value indicates the use of the RothC value= 0.54
+### Potential transformation rate constants
+2              # Rknitri [T-1] Nitrification constant [d-1]
+0.038          # Rkdenit [T-1] Denitrification constant [d-1] 
+1.8           # Rhyd [T-1] Ureum hydrolyse constant [d-1]
+0.0024     # Rkvol [T-1] Volatilization constant [d-1]
+2.5        # w0_dens L/L3 root density at top
+0.02    # rorad [L] mean root radius
+0.01        # rdo [1/L] D0 travel distance resistance between bulk soil and root
+# nitrogen initial pools factor
+0.1        # fraction of N from C (initial C pool is defined in block h of selector.in) [-]
+### Number of N fertilizer applications on top
+2
+### N fertilizer application on top, 1 line per time: time, mass_urea mass_NH4 mass_NO3
+30.00  0       0.0000004       0.0000004
+50.00  0.0000008       0       0
+### initial N pool input per line: PoolNitLit PoolNitMan PoolNitHum (dpm,rpm,hum)
+1.000E-12       2.384E-07       1.268E-06
+1.000E-12       2.384E-07       1.268E-06
+1.000E-12       1.867E-07       1.003E-06
+1.000E-12       1.297E-07       6.855E-07
+1.000E-12       2.591E-07       1.560E-06
+3.333E-13    4.546E-08       2.273E-07
+3.333E-13    1.601E-08       7.705E-08
+3.333E-13    3.542E-08       1.733E-07
+3.333E-13    1.834E-08       7.691E-08
+*** BLOCK K: SOLUTE TRANSPORT INFORMATION *****************************************************
+Epsi lUpW lArtD lTDep  cTolA  cTolR  MaxItC  PeCr lTort
+ 0.5     f       f        f          0        0          20        2     t
+Bulk.d.   DisperL.   Frac   Imobile WC (1..NMat)
+ 0.00155       1.5      1      0
+ 0.00155       1.5      1      0
+ 0.00160       1.5      1      0
+ 0.00155       1.5      1      0
+ 0.00145       1.5      1      0
+ 0.00146       1.5      1      0
+ 0.00165       1.5      1      0
+ 0.00186       1.5      1      0
+ 0.00168       1.5      1      0
+Urea **********************
+DifW    DifG
+4.32       0
+Ks      
+   0.00 
+   0.00 
+   0.00 
+   0.00
+   0.00 
+   0.00 
+   0.00 
+   0.00
+   0.00
+NH4 ***********************
+DifW    DifG
+4.32      0
+Ks      
+   900.0
+   900.0
+   900.0
+   900.0
+   900.0
+   450.0
+    45.0
+    45.0
+    45.0
+NO3  ***********************
+DifW    DifG
+4.32       0
+Ks      
+   0.00 
+   0.00 
+   0.00 
+   0.00
+   0.00 
+   0.00 
+   0.00 
+   0.00
+   0.00 
+kTopSolute   SolTop
+        -1   0 0 0 
+kBotSolute   SolBot
+         -1   0 0 0
+cRootMax(1:NS)
+1e20 1e20 1e20
+tPulse
+   366
+*** END OF INPUT FILE SELECTOR.IN ************************************

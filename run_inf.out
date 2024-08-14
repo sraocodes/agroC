@@ -1,0 +1,10 @@
+ ******* Program SOILCO2
+ *******  Zalf Lysimeter Dedelow Dd_2_6 with Nitrogen                            
+ Units: L = cm  , T = day , M = kg  
+
+
+TLeve        Time          dt Iter ItCum  KodT  KodBConver
+   43   0.100E+01   0.200E-01    1    91    -4     3     T
+  697   0.300E+02   0.500E-01    2   993    -4     3     T
+ 1423   0.600E+02   0.500E-01    2  1971    -4     3     T
+ 2089   0.900E+02   0.500E-01    1  2862    -4     3     T
