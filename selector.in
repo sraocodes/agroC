@@ -6,7 +6,7 @@ i_check run_inf t_level a_level co2_inf nod_inf balance point nod_pool reduction
 LUnit   TUnit   MUnit   MaxIt   TolTh   TolH   QuitNC
 cm       day       kg        20      .001      .01       t
 ShortO   lWat   lCO2   lRoot   lTemp   InitWC   Plants  Nitrogen Phosporus Transport
-   t      t      t      f       t        t        t        t         f        t
+   t      t      t      f       t        t        t        f         f        f
 TopInF   AtmBC   SinkF   WLayer   lAmpl   (top boundary conditions)
     t             t           t           t            
 BotInF   qGWLF   FreeD   SeepF   (bottom boundary conditions)
@@ -19,7 +19,7 @@ xSurf   GWL0L   Aqh   Bqh
  150       0           0        0
 *** BLOCK B: NODAL INFORMATION *****************************************
 NumNP   NMat   NLay   NObs  Nsolutes
-218     9        1     9       3
+218     9        1     9       0
 Observation points
 190 181 150 110 80 60 30 10 1
 dx-increments (NumNP-1 items)
@@ -116,95 +116,4 @@ clay for each material type
 1E-11   4.802E-07       5.000E-08       2.311E-06       1.923E-07
 1E-11   1.063E-06       1.132E-07       5.198E-06       4.706E-07
 1E-11   5.503E-07       4.979E-08       2.307E-06       1.783E-07
-*** BLOCK I: Nitrogen parameters ****************************************************************************************
-lNpools   NRootUpt  Nfixation    rkfixopt [M L2 T-1]  denthresh [-]
-   t        t          f           7.0e-09       0.8
-### Nitrogen tranformation parameters
-10.0       # Ro [-] C/N ratio of the biomass
-0.54       # Fh [-] Humification coefficient; default WAVE = 0.4, negative value indicates the use of the RothC value= 0.54
-### Potential transformation rate constants
-2              # Rknitri [T-1] Nitrification constant [d-1]
-0.038          # Rkdenit [T-1] Denitrification constant [d-1] 
-1.8           # Rhyd [T-1] Ureum hydrolyse constant [d-1]
-0.0024     # Rkvol [T-1] Volatilization constant [d-1]
-2.5        # w0_dens L/L3 root density at top
-0.02    # rorad [L] mean root radius
-0.01        # rdo [1/L] D0 travel distance resistance between bulk soil and root
-# nitrogen initial pools factor
-0.1        # fraction of N from C (initial C pool is defined in block h of selector.in) [-]
-### Number of N fertilizer applications on top
-2
-### N fertilizer application on top, 1 line per time: time, mass_urea mass_NH4 mass_NO3
-30.00  0       0.0000004       0.0000004
-50.00  0.0000008       0       0
-### initial N pool input per line: PoolNitLit PoolNitMan PoolNitHum (dpm,rpm,hum)
-1.000E-12       2.384E-07       1.268E-06
-1.000E-12       2.384E-07       1.268E-06
-1.000E-12       1.867E-07       1.003E-06
-1.000E-12       1.297E-07       6.855E-07
-1.000E-12       2.591E-07       1.560E-06
-3.333E-13    4.546E-08       2.273E-07
-3.333E-13    1.601E-08       7.705E-08
-3.333E-13    3.542E-08       1.733E-07
-3.333E-13    1.834E-08       7.691E-08
-*** BLOCK K: SOLUTE TRANSPORT INFORMATION *****************************************************
-Epsi lUpW lArtD lTDep  cTolA  cTolR  MaxItC  PeCr lTort
- 0.5     f       f        f          0        0          20        2     t
-Bulk.d.   DisperL.   Frac   Imobile WC (1..NMat)
- 0.00155       1.5      1      0
- 0.00155       1.5      1      0
- 0.00160       1.5      1      0
- 0.00155       1.5      1      0
- 0.00145       1.5      1      0
- 0.00146       1.5      1      0
- 0.00165       1.5      1      0
- 0.00186       1.5      1      0
- 0.00168       1.5      1      0
-Urea **********************
-DifW    DifG
-4.32       0
-Ks      
-   0.00 
-   0.00 
-   0.00 
-   0.00
-   0.00 
-   0.00 
-   0.00 
-   0.00
-   0.00
-NH4 ***********************
-DifW    DifG
-4.32      0
-Ks      
-   900.0
-   900.0
-   900.0
-   900.0
-   900.0
-   450.0
-    45.0
-    45.0
-    45.0
-NO3  ***********************
-DifW    DifG
-4.32       0
-Ks      
-   0.00 
-   0.00 
-   0.00 
-   0.00
-   0.00 
-   0.00 
-   0.00 
-   0.00
-   0.00 
-kTopSolute   SolTop
-        -1   0 0 0 
-kBotSolute   SolBot
-         -1   0 0 0
-cRootMax(1:NS)
-1e20 1e20 1e20
-tPulse
-   366
 *** END OF INPUT FILE SELECTOR.IN ************************************
