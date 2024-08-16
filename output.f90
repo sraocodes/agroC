@@ -17,6 +17,7 @@ Contains
     Use Solute, Only: NS,Conc,SorbOut,solute_name, cGWL, CumCh, cCumT, cCumA, chem_vTop, chem_vBot,&
          cvCh0, cvCh1, cvChR, cvChIm
     Use Plants, Only: SucrosPlant, PlantGeometry
+    Use interface_mod, Only: interface
     Implicit None 
     Integer :: i,j,js
     ! arguments
@@ -182,6 +183,7 @@ Contains
 200 format(A10, A9,11A17)
 201 format(A19,10A17)
 190 format(I4, 2I3, f9.2,1p,15e17.3)
+    call interface(t, TLevel)
 !end N.Prolingheuer
     return
   end subroutine TLInf

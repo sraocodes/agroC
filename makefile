@@ -62,7 +62,7 @@ time.o : datatypes.o
 sink.o: datatypes.o geometry.o variables.o carbon.o
 temper.o: datatypes.o
 carbon.o: datatypes.o geometry.o material.o variables.o time.o
-output.o: datatypes.o geometry.o carbon.o variables.o material.o nitrogen.o solute.o plants.o phosphorus.o
+output.o: datatypes.o geometry.o carbon.o variables.o material.o nitrogen.o solute.o plants.o phosphorus.o interface.o
 geometry.o: datatypes.o
 plants.o: datatypes.o time.o geometry.o time.o material.o variables.o
 variables.o : datatypes.o 

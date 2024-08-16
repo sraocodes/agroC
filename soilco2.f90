@@ -20,7 +20,6 @@ program SOILCO2
   Use timedata
   Use Watflow
   Use SourceSink
-  Use interface_mod
   Use Temperature
   Use Plants, only: InitPlantData, &
     CalculateActualTranspiration, ResetActualTranspiration, &
@@ -166,10 +165,6 @@ program SOILCO2
      !     Calculation of heat transport
      if(lTemp) &
           Call Temper(t,dt,HelpP,HelpR,HelpS,HelpQ,HelpT,Disp)
-
-     ! call the interface subroutine
-     Call interface(t, TLevel)
-
 
      !     Calculation of nitrogen
      Call nit_sink(dt)
