@@ -10,7 +10,7 @@ T daily timestep (T = daily, F = hourly)
 53.22245  latitude of the site                                                 (LATITUDE)
 # plant type 1 **************************************************
 1  Whinter Wheat
-3 6 11 11 10 7 8 0 8 4 2 11 3 4 4 3 2   number of rows in the 17 tables
+3 6 11 11 10 7 8 0 8 4 2 3 4 4 3 2   number of rows in the 17 tables
 1  no of dates for planting/emergence and harvests
 50 no of parameters
 3  Kc calculation 1=dvs  2=time 3=computed from LAI                             (AKCTYPE)
@@ -127,18 +127,6 @@ T daily timestep (T = daily, F = hourly)
 # (Tab. 11) # [for all crops] #    DVS or time (day of year, i.e. Julian Date) against akc
    1          0.95
    2          5.00
-# (Tab.12) [for all crops] #    Relative root depth against root density
-    0.0        0.4568
-    0.1        0.2477
-    0.2        0.1343
-    0.3        0.0728
-    0.4        0.0395
-    0.5        0.0214
-    0.6        0.0116
-    0.7        0.0063
-   0.8        0.0034
-   0.9        0.0019
-   1.0        0.0010
 # (Tab.13) [for all crops if N module switched on] #    DVS against N content leaves XNCLE [kg N kg DM-1] Fei et al., 2020
 0.0  0.01
 1.7  0.011
@@ -160,4 +148,4 @@ T daily timestep (T = daily, F = hourly)
 # (Tab.17) [for all crops if N module switched on] #    DVS against N content crowns XNCCRN [kg N kg DM-1] 
 0.0   0.0
 2.0   0.0
-# plant type 1 
+

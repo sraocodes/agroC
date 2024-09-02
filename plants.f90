@@ -40,7 +40,6 @@ Module Plants
        1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0 /)
   Integer :: PlantTabs=12
   !raus Integer, Parameter :: SimplePlantTabs=6
-  Integer, Parameter :: RootTab=12        ! distribution of roots
   !raus Integer, Parameter :: SimpleRootTab=5   ! distribution of roots
   !raus Real(dp) :: dtPlants
   Logical :: harvestresidues
@@ -2458,9 +2457,9 @@ Contains
           End Do
        End Do
        ! copy table with root distribution into Plant
-       Plant(i)%root_distribution%nrows=SucrosPlant(i)%tab(RootTab)%nrows
-       Plant(i)%root_distribution%ncols=2
-       Plant(i)%root_distribution%data=>SucrosPlant(i)%tab(RootTab)%data
+       !Plant(i)%root_distribution%nrows=SucrosPlant(i)%tab(RootTab)%nrows
+       !Plant(i)%root_distribution%ncols=2
+       !Plant(i)%root_distribution%data=>SucrosPlant(i)%tab(RootTab)%data
        Deallocate(datebuffer)
        If(SucrosPlant(i)%akctype==3) Then
           SucrosPlant(i)%akcMin=Minval(SucrosPlant(i)%tab(11)%Data(:,2))
@@ -2469,19 +2468,70 @@ Contains
           Print *,'akcScale=',SucrosPlant(i)%akcScale
        Endif
     End Do
+    
+!---Sathyan rrd.in--------------------------------------------------
+Print *, 'Reading root density data from rrd.in'
+Open(33, file='rrd.in', status='OLD', iostat=ios)
+If(ios/=0) Then
+    Call WriteError('Error while opening root density input file: rrd.in')
+End If
 
-    Do i=1,PlantData%NoTypes
-       If( Plant(i)%p0<Plant(i)%p1 .or. Plant(i)%p1<Plant(i)%p2h .or. &
-            Plant(i)%p2h<Plant(i)%p2l .or. Plant(i)%p2l<Plant(i)%p3 ) &
-            Call WriteError( 'Wrong input pressure head values in plant file: ' // Trim(fn))
+ Do i=1, PlantData%NoTypes
+    !-----------------------------------------
+    ! Read the number of rows for root distribution
+    !-----------------------------------------
+    Read(33, *, iostat=ios) Plant(i)%root_distribution%nrows
+    If(ios/=0) Then
+        Write(line, '(I0)') i
+        Call WriteError('Error reading number of rows in rrd.in for plant ' // Trim(line))
+    End If
+    Print *, 'Number of rows for root distribution for plant', i, ':', Plant(i)%root_distribution%nrows
+
+    Plant(i)%root_distribution%ncols = 2
+
+    !------------------------------------------------------------
+    ! Allocate memory for the root distribution data
+    !------------------------------------------------------------
+    Allocate(Plant(i)%root_distribution%data(Plant(i)%root_distribution%nrows, 2), stat=err)
+    If(err/=0) Then
+        Write(line, '(I0)') i
+        Call AllocateError('Plant(i)%root_distribution%data for plant ' // Trim(line))
+    End If
+
+    !-----------------------------------------------------
+    ! Read the root distribution data row by row
+    !-----------------------------------------------------
+    Do j = 1, Plant(i)%root_distribution%nrows
+        Read(33, *, iostat=ios) Plant(i)%root_distribution%data(j, 1:2)
+        If(ios/=0) Then
+            Write(*, *) 'Error reading root density data at row ', j, ' for plant ', i
+            Call WriteError('Error reading root density data')
+        End If
     End Do
 
-    Close(32)
+    !--------------------------------------------------------
+    ! Print the first and last row of the data as a check
+    !--------------------------------------------------------
+    Print *, 'First row of root distribution data for plant', i, ':', &
+             Plant(i)%root_distribution%data(1, :)
+    Print *, 'Last row of root distribution data for plant', i, ':', &
+             Plant(i)%root_distribution%data(Plant(i)%root_distribution%nrows, :)
+    Print *, 'Root density data loaded for plant index:', i
+ End Do
 
-    Return
-1   Call WriteError( 'Unexpected end of file in: '// Trim(fn))
+ Close(33)
+
+!---Sathyan rrd.in--------------------------------------------------
+ Close(32)  ! Ensure the file is closed after operations are complete
+
+Return
+
+! Error handling for unexpected end of file
+1   Call WriteError('Unexpected end of file in: ' // Trim(fn))
 2   Format(A)
-  End Subroutine ReadPlantData
+
+End Subroutine ReadPlantData
+
 
 
   Real(dp) Function InterpolateTab(tab, x)
